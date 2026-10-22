@@ -15,10 +15,10 @@ jobs:
     timeout-minutes: 120
 
     steps:
-      - name: Baixar arquivos do projeto
+      - name: Baixar projeto
         uses: actions/checkout@v4
 
-      - name: Instalar dependências
+      - name: Instalar dependencias
         run: |
           sudo apt-get update
           sudo apt-get install -y git zip unzip openjdk-17-jdk python3-pip python3-venv autoconf libtool pkg-config zlib1g-dev libncurses-dev cmake libffi-dev libssl-dev
@@ -31,12 +31,11 @@ jobs:
 
       - name: Configurar Android SDK
         uses: android-actions/setup-android@v3
-        with:
-          packages: |
-            platform-tools
-            platforms;android-35
-            build-tools;35.0.0
-            ndk;27.2.12479018
+
+      - name: Instalar ferramentas Android
+        run: |
+          yes | sdkmanager --licenses
+          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0" "ndk;27.2.12479018"
 
       - name: Configurar Python
         run: |
