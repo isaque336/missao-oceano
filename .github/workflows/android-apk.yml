@@ -23,7 +23,12 @@ jobs:
       - name: Instalar dependencias
         run: |
           sudo apt-get update
-          sudo apt-get install -y git zip unzip openjdk-17-jdk python3-pip python3-venv autoconf libtool pkg-config zlib1g-dev libncurses-dev cmake libffi-dev libssl-dev
+          sudo apt-get install -y \
+            git zip unzip openjdk-17-jdk \
+            python3-pip python3-venv \
+            autoconf libtool pkg-config \
+            zlib1g-dev libncurses-dev cmake \
+            libffi-dev libssl-dev
 
       - name: Configurar Java
         uses: actions/setup-java@v4
@@ -31,37 +36,31 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Instalar Android SDK
-        run: |
-          echo "ANDROID_HOME=$HOME/android-sdk" >> "$GITHUB_ENV"
-          echo "ANDROID_SDK_ROOT=$HOME/android-sdk" >> "$GITHUB_ENV"
-          mkdir -p "$HOME/android-sdk/cmdline-tools"
-          cd "$HOME"
-          wget -q https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -O android-tools.zip
-          unzip -q android-tools.zip
-          mkdir -p "$HOME/android-sdk/cmdline-tools/latest"
-          mv cmdline-tools/* "$HOME/android-sdk/cmdline-tools/latest/"
-          echo "$HOME/android-sdk/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
-          echo "$HOME/android-sdk/platform-tools" >> "$GITHUB_PATH"
-          yes | "$HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$HOME/android-sdk" --licenses
-          "$HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$HOME/android-sdk" "platform-tools" "platforms;android-35" "build-tools;35.0.0" "ndk;27.2.12479018"
-
       - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar Buildozer
         run: |
-          python3 -m venv .venv
+          python -m venv .venv
           . .venv/bin/activate
           pip install --upgrade pip setuptools wheel
-          pip install buildozer cython==0.29.36
+          pip install "buildozer==1.5.0" "cython==0.29.36"
 
       - name: Gerar APK
+        env:
+          ANDROIDNDK: "25b"
         run: |
           . .venv/bin/activate
           yes | buildozer android debug
+          mkdir -p resultado
+          find bin -name "*.apk" -exec cp {} resultado/ \;
 
       - name: Enviar APK
         uses: actions/upload-artifact@v4
         with:
           name: Missao-Oceano-Android-APK
-          path: bin/*.apk
+          path: resultado/*.apk
           if-no-files-found: error
           retention-days: 14
