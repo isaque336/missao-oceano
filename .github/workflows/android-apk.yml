@@ -1,33 +1,46 @@
+
 name: Build Missao Oceano APK
+
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main, Principal]
+
 permissions:
   contents: read
-  actions: read
+
 jobs:
   build-apk:
     runs-on: ubuntu-22.04
     timeout-minutes: 120
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y git zip unzip openjdk-17-jdk python3-pip python3-venv \
-            autoconf libtool pkg-config zlib1g-dev libncurses-dev cmake libffi-dev libssl-dev
-      - name: Set up Python environment
+          sudo apt-get install -y git zip unzip openjdk-17-jdk python3-pip python3-venv autoconf libtool pkg-config zlib1g-dev libncurses-dev cmake libffi-dev libssl-dev
+
+      - name: Set up Python
         run: |
           python3 -m venv .venv
           . .venv/bin/activate
           pip install --upgrade pip setuptools wheel
           pip install buildozer cython==0.29.36
-      - name: Build debug APK
+
+      - name: Accept Android SDK licenses and install tools
+        run: |
+          mkdir -p "$ANDROID_HOME/licenses"
+          yes | sdkmanager --licenses || true
+          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Build APK
         run: |
           . .venv/bin/activate
           buildozer android debug
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
