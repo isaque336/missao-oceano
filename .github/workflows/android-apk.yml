@@ -30,11 +30,10 @@ jobs:
           pip install --upgrade pip setuptools wheel
           pip install buildozer cython==0.29.36
 
-      - name: Accept Android SDK licenses and install tools
-        run: |
-          mkdir -p "$ANDROID_HOME/licenses"
-          yes | sdkmanager --licenses || true
-          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
 
       - name: Build APK
         run: |
