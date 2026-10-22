@@ -1,0 +1,19 @@
+PROTEJA OS OCEANOS — VERSÃO PARA APRESENTAÇÃO
+
+COMO ABRIR
+1. Extraia o ZIP inteiro para uma pasta (não execute de dentro do ZIP).
+2. Abra a pasta ProtejaOsOceanos_FINAL_ENTREGA.
+3. Dê dois cliques em ABRIR_JOGO.pyw.
+4. O jogo abre em tela cheia. Pressione ESC para sair.
+
+CONTROLES
+- A / D ou setas esquerda/direita: mover.
+- Setas para cima/baixo ou W/S: explorar a profundidade na Fase 1.
+- Dois toques rápidos em ↑ ou W: pular as fendas.
+- Clique no objeto identificado como LIXO • CLIQUE PARA PEGAR para recolher.
+- Clique nos animais presos na Fase 2 para salvá-los.
+- Arraste pelas letras na Fase 3 para encontrar as palavras.
+- Na Fase 4, aproxime-se dos corais, clique três vezes e responda à pergunta.
+
+REQUISITOS
+É necessário ter Python e Pygame instalados neste computador. Este pacote abre o jogo pelo Python; não é um executável .exe autônomo.

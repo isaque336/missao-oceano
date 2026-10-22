@@ -1,0 +1,30 @@
+PROTEJA OS OCEANOS — VERSÃO COM FASE 1 EXPANDIDA
+
+MUDANÇAS DESTA VERSÃO
+- A Fase 1 agora tem um mapa maior para os lados e também para o fundo do mar.
+- A câmera acompanha o personagem na horizontal e na vertical.
+- O lixo só é recolhido quando você clica/toque diretamente nele.
+- Na Fase 2, os animais só são salvos quando você clica/toque neles.
+- Foram adicionadas barreiras rochosas na Fase 1; para atravessá-las de frente, pule.
+- O caça-palavras da Fase 3 permanece com 14 palavras e 4 minutos.
+- A Fase 4 e seus seis corais foram mantidos.
+
+CONTROLES
+- A / D ou setas esquerda/direita: mover para os lados.
+- Seta para cima/baixo: explorar a profundidade do mapa da Fase 1.
+- Dois toques rápidos em seta para cima (ou W duas vezes): pular.
+- Clique/toque no lixo: recolher.
+- Clique/toque no animal preso: salvar.
+- Na Fase 4, continue clicando nos corais conforme as instruções da tela.
+
+COMO GERAR O EXECUTÁVEL NO WINDOWS
+1. Extraia todos os arquivos do ZIP para uma pasta.
+2. Dê dois cliques em CRIAR_EXE.bat.
+3. Aguarde o processo terminar.
+4. O jogo ficará em dist\ProtejaOsOceanos.exe.
+
+Não mova as imagens ou os arquivos de áudio para fora da pasta antes de compilar.
+
+
+FASE 5 — O ÚLTIMO SUSPIRO DO OCEANO
+A Fase 5 usa o cenário submarino enviado e contém cinco desafios: aquecimento dos corais, acidificação pelo CO2, habitats e biodiversidade, escolhas sustentáveis e pergunta final. Clique na resposta; se estiver correta, leia a explicação e clique em CONTINUAR. Se errar, leia a dica e clique em TENTAR NOVAMENTE.

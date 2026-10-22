@@ -1,0 +1,23 @@
+MISSÃO OCEANO — COMO GERAR O APK ANDROID
+
+Este pacote contém o projeto do jogo e um fluxo de compilação automática. Ele ainda NÃO é o APK instalável.
+
+FORMA MAIS SIMPLES (com ajuda de um responsável):
+1. Entre em github.com e crie uma conta/repositório privado para o projeto.
+2. Envie o conteúdo desta pasta para a raiz do repositório, incluindo a pasta oculta .github/workflows.
+3. Abra a aba Actions do repositório.
+4. Escolha “Build Missao Oceano APK” e clique em “Run workflow”. Se não aparecer, faça primeiro um commit na branch main.
+5. Aguarde o processo. A primeira compilação pode demorar bastante e pode falhar se a receita Android do Pygame ou alguma dependência precisar de ajustes.
+6. Se concluir com sucesso, abra a execução e baixe o artefato “Missao-Oceano-Android-APK”. Dentro dele estará o APK.
+7. Instale primeiro em um aparelho Android de teste e confira menu, áudio, toque, analógico e as cinco fases.
+
+CONTROLES PREVISTOS:
+- Analógico virtual no canto inferior esquerdo.
+- Botão PULAR no canto inferior direito nas fases que usam salto.
+- Toques na tela para os objetos e opções.
+
+IMPORTANTE:
+- Este fluxo tenta compilar o jogo; não garante que a primeira compilação passe sem ajustes.
+- Se a compilação falhar, baixe o log da execução e use a mensagem de erro para corrigir as dependências/configuração.
+- Não publique nem compartilhe APK sem testar em aparelho real.
+- Para a conta de desenvolvedor e pagamentos da Google Play, envolva seu responsável.

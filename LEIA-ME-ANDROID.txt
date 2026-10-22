@@ -1,0 +1,27 @@
+MISSÃO OCEANO — PACOTE PREPARADO PARA ANDROID
+
+O que foi preparado
+- Controles de toque com analógico virtual para movimentar o personagem nas fases 1, 2 e 4.
+- Botão PULAR na tela para as fases 1 e 2.
+- Toques na tela são encaminhados para as interações existentes: recolher lixo, salvar animais, selecionar letras e responder perguntas.
+- O projeto foi configurado em orientação horizontal (landscape), adequada ao layout atual do jogo.
+- Os arquivos de imagens, sons e fases estão incluídos.
+
+IMPORTANTE
+Este ZIP é o projeto Android preparado para compilação, não um APK instalável. Para instalar diretamente no celular, é necessário compilar o APK em um computador Linux com Buildozer, Java, Android SDK/NDK e conexão para baixar as ferramentas Android.
+
+Como compilar (Linux)
+1. Extraia este ZIP para uma pasta.
+2. Instale Python 3, Java JDK, Buildozer e as dependências do Android documentadas pelo Buildozer.
+3. Abra o terminal dentro da pasta ProtejaOsOceanos_FINAL_ENTREGA.
+4. Execute: buildozer android debug
+5. Aguarde a primeira compilação (pode demorar bastante porque baixa SDK/NDK).
+6. O APK será colocado na pasta bin/. Copie-o para o celular e instale permitindo a instalação desse APK.
+
+CONTROLES
+- Arraste o analógico no canto inferior esquerdo para mover o personagem.
+- Toque em PULAR no canto inferior direito para saltar nas fases 1 e 2.
+- Toque diretamente no lixo e nos animais quando estiver perto deles.
+- Nas outras fases, toque nas letras, corais, respostas e botões da tela.
+
+Observação: é necessário testar o APK num Android real antes de publicar na Google Play. A compilação final pode exigir ajustes conforme a versão do Buildozer/python-for-android usada.

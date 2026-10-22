@@ -1,0 +1,21 @@
+PROTEJA OS OCEANOS — ABRIR DIRETAMENTE
+
+IMPORTANTE: NAO abra o iniciador de dentro da janela do ZIP.
+
+1. Volte para a pasta onde esta o arquivo ZIP baixado.
+2. Clique com o botao direito no ZIP e escolha “Extrair tudo...”.
+3. Clique em “Extrair”.
+4. Abra a pasta ProtejaOsOceanos_BARRIRAS_ROCHA (ou o nome da pasta extraída).
+5. Dentro dela, de dois cliques em ABRIR_JOGO.pyw.
+
+Mantenha jogo.py, as imagens e as musicas juntas na mesma pasta.
+Este modo usa Python e Pygame instalados no computador e nao cria um .exe.
+
+
+NOVA VERSAO: Fase 1 com 3 minutos, lixo identificado com etiqueta amarela, fundo mais arenoso ao explorar a profundidade e obstaculos de rocha que precisam ser pulados.
+
+ATUALIZAÇÃO VISUAL
+- O jogo abre em tela cheia quando o modo é suportado pelo computador.
+- A imagem do mapa da Fase 1 foi refeita para manter a proporção correta e evitar o fundo esticado.
+- A parte inferior é mais escura para dar sensação de profundidade.
+- Pressione ESC para fechar o jogo.
