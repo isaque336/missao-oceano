@@ -1,66 +1,62 @@
-
-name: Build Missao Oceano APK
+name: Gerar APK Android
 
 on:
   workflow_dispatch:
   push:
     branches:
       - main
-      - Principal
 
 permissions:
   contents: read
 
 jobs:
-  build-apk:
+  build:
     runs-on: ubuntu-22.04
-    timeout-minutes: 120
 
     steps:
-      - name: Baixar projeto
+      - name: Baixar o projeto
         uses: actions/checkout@v4
-
-      - name: Instalar dependencias
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            git zip unzip openjdk-17-jdk \
-            python3-pip python3-venv \
-            autoconf libtool pkg-config \
-            zlib1g-dev libncurses-dev cmake \
-            libffi-dev libssl-dev
 
       - name: Configurar Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: "17"
 
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11.9"
+          cache: "pip"
 
-      - name: Instalar Buildozer
+      - name: Instalar dependências do sistema
         run: |
-          python -m venv .venv
-          . .venv/bin/activate
-          pip install --upgrade pip setuptools wheel
-          pip install "buildozer==1.5.0" "cython==0.29.36"
+          sudo apt-get update
+          sudo apt-get install -y \
+            git zip unzip \
+            build-essential \
+            autoconf automake libtool \
+            pkg-config cmake \
+            zlib1g-dev libffi-dev libssl-dev \
+            libncurses5-dev libncursesw5-dev \
+            libltdl-dev
+
+      - name: Instalar Buildozer e Cython
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "setuptools<70"
+          python -m pip install "buildozer==1.5.0" "cython==0.29.36"
 
       - name: Gerar APK
         env:
-          ANDROIDNDK: "25b"
+          P4A_RELEASE: "1"
         run: |
-          . .venv/bin/activate
-          yes | buildozer android debug
-          mkdir -p resultado
-          find bin -name "*.apk" -exec cp {} resultado/ \;
+          buildozer -v android debug
 
-      - name: Enviar APK
+      - name: Disponibilizar APK
         uses: actions/upload-artifact@v4
         with:
-          name: Missao-Oceano-Android-APK
-          path: resultado/*.apk
+          name: missao-oceano-apk
+          path: bin/*.apk
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 7
